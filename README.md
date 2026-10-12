@@ -21,3 +21,13 @@ How open-weight LLMs from 2022 to 2026 reach 128K–1M tokens of context. It sta
 dimensions (illustrated on Qwen3, Qwen3.5 and Qwen VL's multidimensional M-RoPE), then walks through YaRN line by line in DeepSeek
 V4-Flash's own modeling code. It follows with a year-by-year table of context lengths, RoPE bases and extension methods, and a
 count of what the current flagship from each of 18 labs actually uses. This lesson is a reading with figures, not a notebook.
+
+## 3. FlashAttention, from the idea to FlashAttention-4
+
+[Read the lesson](03_flash_attention/README.md)
+
+Why exact attention is limited by memory traffic, and how FlashAttention removes it with tiling, an online softmax and
+recomputation (with a worked two-block example and a 25-line reference implementation). The lesson then follows each version to
+the GPU unit that became the bottleneck: FA2's repartitioning on A100, FA3's overlap of exponentials and asynchronous matmuls
+plus FP8 on H100, and FA4's polynomial exp2 and lazy rescaling on B200. It ends with the numerical-stability history, including the
+2025–2026 BF16 backward precision problem, what fixes it, and which fixes are in the main repo. This lesson is a reading with figures, not a notebook.
