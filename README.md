@@ -12,3 +12,12 @@ exactly which variables they receive and what each one means, replaces `torchrun
 at `MASTER_ADDR:MASTER_PORT` and run their first `all_reduce`, and ends with questions you check by breaking the environment on purpose.
 
 Runs on a CPU-only machine (4 processes, `gloo`) or on a multi-GPU box (one process per GPU, NCCL). Needs only `torch`.
+
+## 2. How open LLMs get long context
+
+[Read the lesson](02_long_context/README.md)
+
+How open-weight LLMs from 2022 to 2026 reach 128K–1M tokens of context. It starts with how RoPE assigns a frequency to every pair of
+dimensions (illustrated on Qwen3, Qwen3.5 and Qwen VL's multidimensional M-RoPE), then walks through YaRN line by line in DeepSeek
+V4-Flash's own modeling code. It follows with a year-by-year table of context lengths, RoPE bases and extension methods, and a
+count of what the current flagship from each of 18 labs actually uses. This lesson is a reading with figures, not a notebook.
