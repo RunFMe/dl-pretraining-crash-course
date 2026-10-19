@@ -31,3 +31,15 @@ recomputation (with a worked two-block example and a 25-line reference implement
 the GPU unit that became the bottleneck: FA2's repartitioning on A100, FA3's overlap of exponentials and asynchronous matmuls
 plus FP8 on H100, and FA4's polynomial exp2 and lazy rescaling on B200. It ends with the numerical-stability history, including the
 2025–2026 BF16 backward precision problem, what fixes it, and which fixes are in the main repo. This lesson is a reading with figures, not a notebook.
+
+## 4. Rebuilding MiMo-V2.6: an open frontier RL run, stage by stage
+
+[Read the lesson](04_mimo_v26_rl/README.md) · [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/RunFMe/dl-pretraining-crash-course/blob/main/04_mimo_v26_rl/rl_by_hand.ipynb)
+
+What it would take to rebuild Xiaomi's MiMo-V2.6-Pro (1.02T parameters, September 2026), the most openly documented frontier
+agentic-RL run so far. The lesson goes stage by stage (base model, SFT, a single mixed RL run, on-policy distillation) and says
+for each one what is released, what is only described and what is missing. Most of it is about RL: how MiMo rebuilt GRPO for
+100K-token, asynchronously generated agent trajectories (prompt-mean aggregation, importance ratios against the inference engine,
+clipping as a mask, graders that rank passing solutions), the systems that keep 25K trajectories per step flowing, how the
+environments and graders were built and where they leaked, and how on-policy distillation reuses the same loss with a teacher as
+the advantage. It is a reading in five parts with figures, plus a NumPy notebook that recomputes every worked example on CPU.
